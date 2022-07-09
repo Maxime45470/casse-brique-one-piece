@@ -12,15 +12,16 @@ function pdo_connect(){
         exit('failed to connect bdd');
     }
 }
-
-?>
-
 */
 
+
+
+
+
 function pdo_connect(){
-    $DATABASE_HOST = 'casse';
+    $DATABASE_HOST = 'localhost';
     $DATABASE_USER = 'root';
-    $DATABASE_PASS = '';
+    $DATABASE_PASS = 'root';
     $DATABASE_NAME = 'db_score';
 
     try{

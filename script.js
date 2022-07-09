@@ -2,10 +2,8 @@
 // - Press start menu
 
 // Game constants
-var canvas = document.getElementById("canvasElem");
-var context = canvas.getContext("2d");
-var GAME_ZONE_WIDTH = 600;
-var GAME_ZONE_HEIGHT = 1300;
+var GAME_ZONE_WIDTH = 550;
+var GAME_ZONE_HEIGHT = 1000;
 
 var KEY_RIGHT = 39;
 var KEY_LEFT = 37;
@@ -132,7 +130,6 @@ var missileImage;
 
 
 
-
 /***************************************************************************************************************************/
 /* Constructor													       */
 /***************************************************************************************************************************/
@@ -175,9 +172,7 @@ window.addEventListener('load',
 
     // Mouse event listener
     window.document.onclick = onClick;
-    window.document.onmousemove = onMouseMove;
-
-
+    document.addEventListener("mousemove", mouseMoveHandler, false);
     // Accelerometer event listener
     if (window.DeviceMotionEvent != undefined) {
       window.ondevicemotion = onDeviceMotion;
@@ -469,15 +464,6 @@ function onKeyDown(event) {
   }
 }
 
-document.addEventListener("mousemove", oMouseMove, false);
-
-function onMouseMove(e) {
-  var relativeX = e.clientX - canvas.offsetLeft;
-  if(relativeX > 0 && relativeX < canvas.width) {
-      paddleX = relativeX - paddleWidth/2;
-  }
-}
-
 // Keyboard event listener
 function onKeyPress(event) {
   // Right arrow
@@ -505,7 +491,7 @@ function onKeyUp(event) {
 }
 
 // Mouse event listener
-function onClick() {
+function onClick(event) {
   // Launch the ball
   bBallLaunched = 1;
   if (bPowerStick) {
@@ -527,7 +513,6 @@ function onClick() {
     }
   }
 }
-
 
 
 function mouseMoveHandler(e) {

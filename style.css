@@ -9,12 +9,17 @@ body
 
 #container
 {
-    width: 1300px;
-    height: 600px;
+    width: 100%;
+    overflow: hidden;
+
     border: 3px solid #000;
     position: relative;
-    margin: auto auto;
+    padding: 0 !important;
     background: #fff;
+}
+
+.row {
+    overflow: hidden;
 }
 
 #score {
@@ -73,6 +78,7 @@ h1
     color: #000;
     font-family: 'Ruslan Display', cursive;
     margin-top: 10px;
+    height: 40px;
 }
 
 .center {
