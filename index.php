@@ -17,8 +17,8 @@ $score = $sql->fetchAll(\PDO::FETCH_ASSOC);
     <meta charset="utf-8" />
 
 
-    
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -36,20 +36,21 @@ $score = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
     <h1>Casse-Poutine</h1>
 
-
+<section>
     <div id='container'>
         <div class="row">
-            <canvas id="canvasElem" width="1000" height="550">
+            <canvas id="canvasElem" width="1000" height="490">
                 HTML5 not supported !
             </canvas>
         </div>
     </div>
+</section>
 
 
-    <div class="center">
+    <div id="visible2" class="center">
         <form class="center" method="GET">
             <p class="center">Entrer votre pseudo après la partie puis valider pour enregistrer votre score</p>
-            <input type="text" id="pseudo" name="pseudo" value="">
+            <input type="text" id="pseudo" placeholder="Ton Pseudo" name="pseudo" value=""  required="required">
             <input id="submit2" type="submit" value="Valider">
 
         </form>
@@ -74,8 +75,8 @@ $score = $sql->fetchAll(\PDO::FETCH_ASSOC);
 </body>
 
 
-<table>
-    <tbody>
+<table id="visible">
+    <tbody class="vis">
         <tr>
             <td>Pseudo</td>
             <td>Score</td>
