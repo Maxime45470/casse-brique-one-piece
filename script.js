@@ -1,9 +1,10 @@
 // TODO :
 // - Press start menu
-
+var canvas = document.getElementById("canvasElem");
+var ctx = canvas.getContext("2d");
 // Game constants
-var GAME_ZONE_WIDTH = 550;
-var GAME_ZONE_HEIGHT = 1000;
+var GAME_ZONE_WIDTH = document.body.clientWidth;
+var GAME_ZONE_HEIGHT = document.body.clientHeight;
 
 var KEY_RIGHT = 39;
 var KEY_LEFT = 37;
@@ -21,6 +22,8 @@ var BRICK_COLORS_2 = ["#AAAAAA", "#CC0000", "#CCCC00", "#0000CC", "#CC00CC", "#0
 
 var BAR_WIDTH = 120;
 var BAR_HEIGHT = 20;
+var paddleX = (canvas.width-BAR_WIDTH)/2;
+
 var BAR_SPEED = 4;
 var BAR_COLOR_1 = "#FFFFFF";
 var BAR_COLOR_2 = "#777777";
@@ -172,7 +175,7 @@ window.addEventListener('load',
 
     // Mouse event listener
     window.document.onclick = onClick;
-    document.addEventListener("mousemove", mouseMoveHandler, false);
+    document.addEventListener('mousemove', mouseMoveHandler, false);
     // Accelerometer event listener
     if (window.DeviceMotionEvent != undefined) {
       window.ondevicemotion = onDeviceMotion;
@@ -515,12 +518,24 @@ function onClick(event) {
 }
 
 
-function mouseMoveHandler(e) {
-  var relativeX = e.clientX - canvas.offsetLeft;
+function mouseMoveHandler(event) {
+  var relativeX = event.clientX - canvas.offsetLeft;
   if(relativeX > 0 && relativeX < canvas.width) {
-      paddleX = relativeX - paddleWidth/2;
+      fBarX = relativeX - BAR_WIDTH/2;
   }
 }
+
+$(fBarX).on( "vmouseover", fBarX, function() {
+  bMouseOver = 1;
+  console.log("mouseover");
+}
+);
+
+
+
+
+
+
 
 // Accelerometer event listener
 function onDeviceMotion(event) {
