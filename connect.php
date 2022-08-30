@@ -1,5 +1,5 @@
 <?php
-
+/*
 function pdo_connect(){
     $DATABASE_HOST = 'localhost';
     $DATABASE_NAME = 'jedsfxve_db_score';
@@ -12,13 +12,12 @@ function pdo_connect(){
         exit('failed to connect bdd');
     }
 }
+*/
 ?>
-
-
 
 <?php
 
-/*
+
 function pdo_connect(){
     $DATABASE_HOST = 'localhost';
     $DATABASE_USER = 'root';
@@ -30,6 +29,5 @@ function pdo_connect(){
     } catch(PDOException $exception) {
         exit('failed to connect bdd');
     }
-}*/
-
+}
 ?>

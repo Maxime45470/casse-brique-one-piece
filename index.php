@@ -39,7 +39,7 @@ $score = $sql->fetchAll(\PDO::FETCH_ASSOC);
 <section>
     <div id='container'>
         <div class="row">
-            <canvas id="canvasElem" width="1000" height="490">
+            <canvas id="canvasElem" style="cursor: none;" width="1000" height="490">
                 HTML5 not supported !
             </canvas>
         </div>

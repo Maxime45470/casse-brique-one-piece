@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "max",
+            "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock",
+            "database": "db_score",
+            "username": "root",
+            "password": "root"
+        }
+    ]
+}
