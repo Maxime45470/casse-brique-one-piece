@@ -1,16 +1,19 @@
+#canvasElement {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
 
-
-body
-{
+body {
     background-color: #b6bdbb !important;
-    
+
     background-attachment: relative;
     background-repeat: no-repeat;
     background-position: center 103px;
 }
 
-#container
-{
+#container {
     width: 95%;
     height: 95%;
     margin: 0 auto;
@@ -18,8 +21,8 @@ body
 
 
     border: 3px solid #000;
-    
-    
+
+
     background: #fff;
 }
 
@@ -32,16 +35,16 @@ body
     top: -540px;
     text-align: center;
     font-size: 30px;
-    font-family: 'Tapestry', cursive; 
+    font-family: 'Tapestry', cursive;
     padding-bottom: 10px;
-    
+
 }
 
 #rejouer {
     position: relative;
     top: -540px;
     text-align: center;
-    font-family: 'Tapestry', cursive; 
+    font-family: 'Tapestry', cursive;
     margin-top: 0px;
     border-radius: 10px;
 }
@@ -64,7 +67,8 @@ body
     border-radius: 5px;
 }
 
-#visible, #visible2 {
+#visible,
+#visible2 {
     visibility: hidden;
 }
 
@@ -72,11 +76,11 @@ body
     margin-left: 5px;
     margin-top: 10px;
     height: 24px;
-    
+
 }
 
-h1
-{
+
+h1 {
     font-size: 3em;
     text-align: center;
     text-shadow: 2px 2px 4px grey;

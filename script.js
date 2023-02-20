@@ -1,4 +1,6 @@
 // TODO :
+
+
 // - Press start menu
 var canvas = document.getElementById("canvasElem");
 var ctx = canvas.getContext("2d");
@@ -22,7 +24,7 @@ var BRICK_COLORS_2 = ["#AAAAAA", "#CC0000", "#CCCC00", "#0000CC", "#CC00CC", "#0
 
 var BAR_WIDTH = 120;
 var BAR_HEIGHT = 20;
-var paddleX = (canvas.width-BAR_WIDTH)/2;
+var paddleX = (canvas.width - BAR_WIDTH) / 2;
 
 var BAR_SPEED = 4;
 var BAR_COLOR_1 = "#FFFFFF";
@@ -120,7 +122,7 @@ var iScore = 0;
 
 var iLifeCount = 3;
 
-var iLevel = 1;
+var iLevel = 3;
 
 var bkgImagepp;
 var bkgImageWin;
@@ -130,6 +132,7 @@ var ballImage;
 var lifeImage;
 var barImage;
 var missileImage;
+
 
 
 
@@ -145,6 +148,8 @@ window.addEventListener('load',
     if (!elem || !elem.getContext) {
       return;
     }
+
+
 
     // Get the 2D context
     context = elem.getContext('2d');
@@ -182,7 +187,7 @@ window.addEventListener('load',
     }
 
     bkgImagepp = new Image();
-    bkgImagepp.src = "resources/poupou.png";
+
 
     // Load background image défaite
     bkgImage = new Image();
@@ -206,7 +211,7 @@ window.addEventListener('load',
     barImage.src = "resources/bazz.png";
     // Load life image
     lifeImage = new Image();
-    lifeImage.src = "resources/life.png";
+    lifeImage.src = "resources/monkey.png";
   },
   false);
 
@@ -258,6 +263,16 @@ function refreshGame() {
         bStick[0] = 0;
       }
     }
+  }
+
+  if (iLevel == 1) {
+    bkgImagepp.src = "resources/baggy2.jpeg ";
+  }
+  else if (iLevel == 2) {
+    bkgImagepp.src = "resources/alabasta.jpeg ";
+  }
+  else if (iLevel == 3) {
+    bkgImagepp.src = "resources/impel.jpeg ";
   }
 
   // Update and display the bar
@@ -520,16 +535,11 @@ function onClick(event) {
 
 function mouseMoveHandler(event) {
   var relativeX = event.clientX - canvas.offsetLeft;
-  if(relativeX > 0 && relativeX < canvas.width) {
-      fBarX = relativeX - BAR_WIDTH/2;
+  if (relativeX > 0 && relativeX < canvas.width) {
+    fBarX = relativeX - BAR_WIDTH / 2;
   }
 }
 
-$(fBarX).on( "vmouseover", fBarX, function() {
-  bMouseOver = 1;
-  console.log("mouseover");
-}
-);
 
 
 
@@ -603,7 +613,7 @@ function displayBall(i) {
     context.fillStyle = BALL_COLOR;
 
   }
-  
+
   context.beginPath();
   context.arc(fBallX[i], fBallY[i], BALL_SIZE, 0, 2 * Math.PI, true);
   context.closePath();
@@ -799,5 +809,3 @@ function checkCollisionRectRect(iRect1X, iRect1Y, iRect1Width, iRect1Height, iRe
 function random(min, max) {
   return Math.floor(min + (max - min + 1) * Math.random());
 }
-
-
