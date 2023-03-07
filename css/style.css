@@ -5,6 +5,11 @@
     background-attachment: fixed;
 }
 
+@font-face {
+    font-family: 'one';
+    src: url('../font/one_piece.ttf');
+}
+
 body {
     background-color: #b6bdbb !important;
 
@@ -18,11 +23,7 @@ body {
     height: 95%;
     margin: 0 auto;
     overflow: hidden;
-
-
     border: 3px solid #000;
-
-
     background: #fff;
 }
 
@@ -30,87 +31,69 @@ body {
     overflow: hidden;
 }
 
+.btn {
+    padding: 0px 10px 0px 10px !important;
+    height: 40px;
+}
+
 #score {
-    position: relative;
-    top: -540px;
+    position: fixed;
+    top: 100px;
+    left: 50px;
     text-align: center;
     font-size: 30px;
-    font-family: 'Tapestry', cursive;
+    font-family: 'one';
     padding-bottom: 10px;
-
-}
-
-#rejouer {
-    position: relative;
-    top: -540px;
-    text-align: center;
-    font-family: 'Tapestry', cursive;
-    margin-top: 0px;
+    border: 1px solid #000;
     border-radius: 10px;
+    background-color: #b6bdbbd3;
+    width: 500px;
 }
 
-#submit {
-    width: 300px;
-    height: 100px;
-    border-radius: 15px;
-    font-size: 35px;
-    font-family: 'Tapestry', cursive;
-    background-color: #b6bdbb78;
-
+form.center {
+    position: fixed;
+    top: 220px;
+    left: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'one';
+    padding: 10px;
+    height: 60px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #b6bdbbd3;
+    margin: 0 auto;
 }
 
 #submit2 {
     margin-left: 5px;
     margin-top: 5px;
     height: 30px;
+    font-family: 'one';
     align-items: center;
     border-radius: 5px;
 }
 
 #visible,
-#visible2 {
+#visible2,
+.visible3 {
     visibility: hidden;
 }
 
-#pseudo {
-    margin-left: 5px;
-    margin-top: 10px;
-    height: 24px;
-
-}
-
-
 h1 {
-    font-size: 3em;
+    font-size: 5em;
     text-align: center;
     text-shadow: 2px 2px 4px grey;
     margin-bottom: 0px !important;
     color: #000;
-    font-family: 'Ruslan Display', cursive;
+    font-family: 'one';
     margin-top: 10px;
     height: 40px;
+    padding: 0px 10px 0px 10px;
 }
 
 .center {
     display: flex !important;
     justify-content: center !important;
-    margin-top: 10px;
-}
-
-table {
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    font-size: 25px;
-    text-align: center;
-    background-color: #b6bdbb;
-
-
-}
-
-
-td {
-    padding: 10px;
-    border: 1px solid #000 !important;
-    width: 100px;
+    margin-top: 5px;
 }
