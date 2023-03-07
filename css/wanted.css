@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'one';
+    src: url('../font/one_piece.ttf');
+}
+
+body {
+    background-color: #b6bdbb !important;
+    background-attachment: relative;
+    background-repeat: no-repeat;
+    background-position: center 103px;
+}
+
+h1 {
+    font-size: 5em;
+    text-align: center;
+    text-shadow: 2px 2px 4px grey;
+    margin-bottom: 0px !important;
+    color: #000;
+    font-family: 'one';
+    margin-top: 10px;
+    height: 40px;
+    padding: 0px 10px 0px 10px;
+}
+
+.btn {
+    padding: 0px 10px 0px 10px !important;
+    height: 40px;
+}
+
+.pseudo2 {
+    background-image: url(../resources/wanted.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 734px;
+    width: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    font-family: 'one';
+    font-size: 100px;
+    text-align: center;
+}
+
+.name {
+    margin-top: 180px;
+    margin-bottom: 150px;
+}

@@ -1,41 +1,33 @@
 // TODO :
-
-
 // - Press start menu
 var canvas = document.getElementById("canvasElem");
 var ctx = canvas.getContext("2d");
 // Game constants
 var GAME_ZONE_WIDTH = document.body.clientWidth;
 var GAME_ZONE_HEIGHT = document.body.clientHeight;
-
 var KEY_RIGHT = 39;
 var KEY_LEFT = 37;
 var KEY_UP = 38;
-
 var LINE_COUNT = 3;
 var BRICK_BY_LINE_COUNT = 10;
-var BRICK_WIDTH = 98;
-var BRICK_HEIGHT = 50;
-var BRICK_SPACE = 5;
+var BRICK_WIDTH = 90;
+var BRICK_HEIGHT = 35;
+var BRICK_SPACE = 11;
 var BRICK_HALF_SPACE = 3;
-var BRICK_MARGIN_TOP = 40;
+var BRICK_MARGIN_TOP = 50;
 var BRICK_COLORS_1 = ["#EEEEEE", "#FFAAAA", "#FFFFAA", "#AAAAFF", "#FFAAFF", "#AAFFAA"];
 var BRICK_COLORS_2 = ["#AAAAAA", "#CC0000", "#CCCC00", "#0000CC", "#CC00CC", "#00CC00"];
-
 var BAR_WIDTH = 120;
 var BAR_HEIGHT = 20;
 var paddleX = (canvas.width - BAR_WIDTH) / 2;
-
 var BAR_SPEED = 4;
 var BAR_COLOR_1 = "#FFFFFF";
 var BAR_COLOR_2 = "#777777";
 var BAR_BORDER_COLOR = "#3333FF";
 var BAR_BORDER_SIZE = 10;
-
 var BALL_COLOR;
 var BALL_SIZE = 12;
 var BALL_SPEED = 2;
-
 var BONUS_WIDTH = 48;
 var BONUS_HEIGHT = 15;
 var BONUS_COUNT = 8;
@@ -122,19 +114,17 @@ var iScore = 0;
 
 var iLifeCount = 3;
 
-var iLevel = 3;
+var iLevel = 1;
 
 var bkgImagepp;
 var bkgImageWin;
 var bkgImage;			// Resources
+var berrysImage;
 var brickImage = [new Image(), new Image(), new Image(), new Image()];
 var ballImage;
 var lifeImage;
 var barImage;
 var missileImage;
-
-
-
 
 /***************************************************************************************************************************/
 /* Constructor													       */
@@ -148,15 +138,11 @@ window.addEventListener('load',
     if (!elem || !elem.getContext) {
       return;
     }
-
-
-
     // Get the 2D context
     context = elem.getContext('2d');
     if (!context) {
       return;
     }
-
     // Initialize ball, bar and game zone
     GAME_ZONE_WIDTH = elem.width;
     GAME_ZONE_HEIGHT = elem.height;
@@ -166,7 +152,6 @@ window.addEventListener('load',
     fBallY[0] = fBarY - BALL_SIZE;
     fPrevBallX[0] = fBallX[0];
     fPrevBallY[0] = fBallY[0];
-
     // Initialize the bricks
     createBricks(LINE_COUNT, BRICK_BY_LINE_COUNT, BRICK_WIDTH, BRICK_HEIGHT, BRICK_SPACE);
 
@@ -188,15 +173,9 @@ window.addEventListener('load',
 
     bkgImagepp = new Image();
 
-
-    // Load background image défaite
-    bkgImage = new Image();
-    bkgImage.src = "resources/loose.jpg";
-    bkgImageWin = new Image();
-    bkgImageWin.src = "resources/win.jpg";
     // Load brick image
-    brickImage[0].src = "resources/vlad.png";
-    brickImage[1].src = "resources/brick.png";
+    brickImage[0].src = "resources/world.webp";
+    brickImage[1].src = "resources/marine2.jpeg";
     brickImage[2].src = "resources/barb.png";
     brickImage[3].src = "resources/barb.png";
 
@@ -212,12 +191,11 @@ window.addEventListener('load',
     // Load life image
     lifeImage = new Image();
     lifeImage.src = "resources/monkey.png";
+    // Load berry image
+    berrysImage = new Image();
+    berrysImage.src = "resources/pngegg.png";
   },
   false);
-
-
-
-
 
 /***************************************************************************************************************************/
 /* Update Operations												       */
@@ -269,10 +247,10 @@ function refreshGame() {
     bkgImagepp.src = "resources/baggy2.jpeg ";
   }
   else if (iLevel == 2) {
-    bkgImagepp.src = "resources/alabasta.jpeg ";
+    bkgImagepp.src = "resources/alab.jpeg ";
   }
   else if (iLevel == 3) {
-    bkgImagepp.src = "resources/impel.jpeg ";
+    bkgImagepp.src = "resources/impell.jpeg ";
   }
 
   // Update and display the bar
@@ -653,27 +631,20 @@ function displayMissiles() {
 // Display the score
 function displayScore() {
   context.fillStyle = SCORE_COLOR;
-  context.font = "bold 15px Arial"; //"italic small-caps bold 12px arial"
-  context.fillText("Soldat Tué : " + iScore, SCORE_X, SCORE_Y);
-
+  context.font = " 25px one";
+  context.fillText("Prime : " + iScore, SCORE_X, SCORE_Y);
 }
 
 // Display the life points
 function displayLife() {
   for (var i = 0; i < iLifeCount; i++) {
-    context.drawImage(lifeImage, 850 + i * 50, 2, 45, 45);
+    context.drawImage(lifeImage, 850 + i * 50, 2, 35, 35);
   }
 }
-
-
-
 
 /***************************************************************************************************************************/
 /* End of Game Operations												       */
 /***************************************************************************************************************************/
-
-
-
 // Called when the player loose a life
 function reinit() {
   fBallX[0] = fBarX + BAR_WIDTH * 0.5;
@@ -688,30 +659,23 @@ function reinit() {
   bBallAlive[1] = 0;
   bBallAlive[2] = 0;
   fBallSpeedMultiplicator = 1;
-
   fBarX = (GAME_ZONE_WIDTH * 0.5) - (BAR_WIDTH * 0.5);
   fBarY = (GAME_ZONE_HEIGHT - BAR_HEIGHT) - 6;
   fBarMoveX = 0;
   fBarSizeFactor = 1;
-
   bKeyRightPressed = 0;
   bKeyLeftPressed = 0;
-
   fBonusX = 0;
   fBonusY = 0;
   bBonusAlive = 0;
   iBonusPower = 0;
-
   fPowerTimer = 0;
-
   bSuperBall = 0;
-
   bPowerStick = 0;
   bStick[0] = 0;
   bStick[1] = 0;
   bStick[2] = 0;
   fStickX[0] = 0;
-
   bPowerShoot = 0;
   for (var i = 0; i < 3; i++) {
     fMissile1X[i] = 0;
@@ -722,14 +686,9 @@ function reinit() {
     bMissile2Alive[i] = 0;
   }
 }
-
-
-
-
 /***************************************************************************************************************************/
 /* Collision Operations												       */
 /***************************************************************************************************************************/
-
 // Collision Rectangle/Circle
 function checkCollisionRectCircle(iLineX, iLineY, iRectX, iRectY, iRectWidth, iRectHeight, iCircleX, iCircleY, iCircleRadius, iPrevCircleX, iPrevCircleY) {
   var iDiameter = 2 * iCircleRadius;
@@ -740,36 +699,30 @@ function checkCollisionRectCircle(iLineX, iLineY, iRectX, iRectY, iRectWidth, iR
     (iCircleX > iRectX + iRectWidth)) {
     return 0;
   }
-
   // Search the nearest side
   var fDist = 1000000;
   var fDistBest = fDist;
   var iSideBest = 0;
-
   fDist = Math.abs(iRectX - (iCircleX + iCircleRadius));
   if (fDist < fDistBest && iLineX > 0 && aBricks[iLineY][iLineX - 1] == 0) {
     fDistBest = fDist;
     iSideBest = 1;
   }
-
   fDist = Math.abs(iRectX + iRectWidth - (iCircleX + iCircleRadius));
   if (fDist < fDistBest && iLineX < BRICK_BY_LINE_COUNT - 1 && aBricks[iLineY][iLineX + 1] == 0) {
     fDistBest = fDist;
     iSideBest = 2;
   }
-
   fDist = Math.abs(iRectY - (iCircleY + iCircleRadius));
   if (fDist < fDistBest && iLineY > 0 && aBricks[iLineY - 1][iLineX] == 0) {
     fDistBest = fDist;
     iSideBest = 3;
   }
-
   fDist = Math.abs(iRectY + iRectHeight - (iCircleY + iCircleRadius));
   if (fDist < fDistBest && (iLineY >= LINE_COUNT - 1 || aBricks[iLineY + 1][iLineX] == 0)) {
     fDistBest = fDist;
     iSideBest = 4;
   }
-
   // Compute penetration
   var fPenetration = 0;
   switch (iSideBest) {
@@ -786,10 +739,8 @@ function checkCollisionRectCircle(iLineX, iLineY, iRectX, iRectY, iRectWidth, iR
       fPenetration = iRectY + iRectHeight - iCircleY;
       break;
   }
-
   return [iSideBest, fPenetration];
 }
-
 // Collision Rectangle/Circle
 function checkCollisionRectRect(iRect1X, iRect1Y, iRect1Width, iRect1Height, iRect2X, iRect2Y, iRect2Width, iRect2Height) {
   return (iRect2X < iRect1X + iRect1Width) &&
@@ -797,14 +748,9 @@ function checkCollisionRectRect(iRect1X, iRect1Y, iRect1Width, iRect1Height, iRe
     (iRect2Y < iRect1Y + iRect1Height) &&
     (iRect2Y + iRect2Height > iRect1Y);
 }
-
-
-
-
 /***************************************************************************************************************************/
 /* Tool Operations												       	       */
 /***************************************************************************************************************************/
-
 // Random
 function random(min, max) {
   return Math.floor(min + (max - min + 1) * Math.random());
