@@ -11,6 +11,7 @@ $score = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
 <head>
     <title>casse brique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/wanted.css" />
     <meta charset="utf-8" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,31 +25,34 @@ $score = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
 <body>
 
+    <div id="wrapper">
+        <div class="d-flex justify-content-center">
 
-    <div class="d-flex justify-content-center">
+            <button class="btn bouton"><a href="../index.php">Jeux</a></button>
 
-        <button class="btn bouton"><a href="../index.php">Jeux</a></button>
+            <h1>One-Piece</h1>
 
-        <h1>One-Piece</h1>
+            <button class="btn bouton"><a href="./score.php">Scores</a></button>
 
-        <button class="btn bouton"><a href="php/score.php">Scores</a></button>
+        </div>
 
-    </div>
+        <div class="container-fluid d-flex justify-content-center">
+            <div class=" row">
+                <?php foreach($score as $casse_brique) :?>
+                <div class=" col-md-3 col-lg-3 d-flex justify-content-center">
+                    <div class="pseudo2">
+                        <p class="name"><?=$casse_brique['pseudo']?></p>
 
-    <div class="container-fluid d-flex justify-content-center">
-        <div class=" row">
-            <?php foreach($score as $casse_brique) :?>
-            <div class=" col-md-12 col-lg-4 d-flex justify-content-center">
-                <div class="pseudo2">
-                    <p class="name"><?=$casse_brique['pseudo']?></p>
-
-                    <p><?=$casse_brique['must']?></p>
+                        <p><?=$casse_brique['must']?></p>
+                    </div>
                 </div>
+                <?php endforeach ?>
             </div>
-            <?php endforeach ?>
         </div>
     </div>
-
+    <div id="avertissement">
+        <p>Attention mettre le téléphone en mode paysage pour une meilleure expérience</p>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
