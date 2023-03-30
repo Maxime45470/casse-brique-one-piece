@@ -1,5 +1,5 @@
 <?php
-require_once('php/connect.php');
+require_once('./php/connect.php');
 $pdo =pdo_connect();
 $sql = $pdo->prepare('SELECT pseudo, MAX(score) AS must FROM casse_brique GROUP BY pseudo ORDER BY must DESC LIMIT 5');
 $sql->execute();
@@ -12,6 +12,7 @@ $score = $sql->fetchAll(\PDO::FETCH_ASSOC);
     <title>casse brique</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,28 +28,34 @@ $score = $sql->fetchAll(\PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <div class="d-flex justify-content-center">
-        <button class="btn bouton"><a href="./index.php">Jeux</a></button>
-        <h1>One-Piece</h1>
-        <button class="btn bouton"><a href="php/score.php">Scores</a></button>
-    </div>
-    <section>
-        <div id='container'>
-            <div class="row">
-                <canvas id="canvasElem" style="cursor: none;" width="1000" height="490">
-                    HTML5 not supported !
-                </canvas>
-            </div>
+    <div id="wrapper">
+        <div class="d-flex justify-content-center">
+            <button class="btn bouton"><a href="./index.php">Jeux</a></button>
+            <h1>One-Piece</h1>
+            <button class="btn bouton"><a href="php/score.php">Scores</a></button>
         </div>
-    </section>
+        <section>
+            <div id='container'>
+                <div class="row">
+                    <canvas id="canvasElem" style="cursor: none;" width="1000" height="490">
+                        HTML5 not supported !
+                    </canvas>
+                </div>
+            </div>
+        </section>
+        <div id="visible" class="center">
+            <form class="center" method="GET">
+                <p class="center">Entrer votre pseudo après la partie puis valider pour enregistrer votre score</p>
+                <input type="text" id="pseudo" placeholder="Ton Pseudo" name="pseudo" value="" required="required">
+                <input id="submit2" type="submit" value="Valider">
+            </form>
+        </div>
+    </div>
+    <div id="avertissement">
+        <p>Attention mettre le téléphone en mode paysage pour une meilleure expérience</p>
+    </div>
 </body>
-<div id="visible" class="center">
-    <form class="center" method="GET">
-        <p class="center">Entrer votre pseudo après la partie puis valider pour enregistrer votre score</p>
-        <input type="text" id="pseudo" placeholder="Ton Pseudo" name="pseudo" value="" required="required">
-        <input id="submit2" type="submit" value="Valider">
-    </form>
-</div>
+
 <div id="envoi"></div>
 <div id="rejouer"></div>
 <div class="visible3" id="score"> </div>

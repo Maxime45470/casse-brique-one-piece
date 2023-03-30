@@ -165,7 +165,41 @@ window.addEventListener('load',
 
     // Mouse event listener
     window.document.onclick = onClick;
-    document.addEventListener('mousemove', mouseMoveHandler, false);
+   // Détecte l'événement touchstart
+document.addEventListener("touchstart", function(event) {
+  // Empêche le défilement de l'écran
+  event.preventDefault();
+
+  // Obtient les coordonnées de l'écran tactile
+  var touch = event.touches[0];
+  var x = touch.pageX;
+
+  // Déplace la raquette en fonction des coordonnées de l'écran tactile
+  var raquette = document.getElementById("paddle");
+  raquette.style.left = (x - raquette.offsetWidth / 2) + "px";
+});
+
+// Détecte l'événement touchmove
+document.addEventListener("touchmove", function(event) {
+  // Empêche le défilement de l'écran
+  event.preventDefault();
+
+  // Obtient les coordonnées de l'écran tactile
+  var touch = event.touches[0];
+  var x = touch.pageX;
+
+  // Déplace la raquette en fonction des coordonnées de l'écran tactile
+  var raquette = document.getElementById("paddle");
+  raquette.style.left = (x - raquette.offsetWidth / 2) + "px";
+});
+
+// Détecte l'événement touchend
+document.addEventListener("touchend", function(event) {
+  // Réinitialise la position de la raquette
+  var raquette = document.getElementById("paddle");
+  raquette.style.left = "50%";
+});
+
     // Accelerometer event listener
     if (window.DeviceMotionEvent != undefined) {
       window.ondevicemotion = onDeviceMotion;

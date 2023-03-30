@@ -1,3 +1,23 @@
+#avertissement {
+    display: none;
+}
+
+@media only screen and (orientation:portrait) {
+    #wrapper {
+        display: none;
+    }
+
+    #avertissement {
+        display: block;
+    }
+}
+
+@media only screen and (orientation:landscape) {
+    #avertissement {
+        display: none;
+    }
+}
+
 #canvasElement {
     background-repeat: no-repeat;
     background-position: center;
@@ -12,7 +32,6 @@
 
 body {
     background-color: #b6bdbb !important;
-
     background-attachment: relative;
     background-repeat: no-repeat;
     background-position: center 103px;
@@ -31,69 +50,144 @@ body {
     overflow: hidden;
 }
 
-.btn {
-    padding: 0px 10px 0px 10px !important;
-    height: 40px;
+
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .bouton {
+        padding: 0px 0px 0px 0px !important;
+        height: 10px;
+    }
+
+    a {
+        font-size: 10px;
+        position: fixed;
+        top: 0px;
+    }
+
+    h1 {
+        visibility: hidden;
+        height: 0px;
+    }
+
+    #score {
+        position: fixed;
+        top: 100px;
+        left: 50px;
+        text-align: center;
+        font-size: 30px;
+        font-family: 'one';
+        padding-bottom: 10px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        background-color: #b6bdbbd3;
+        width: 500px;
+    }
+
+    form.center {
+        position: fixed;
+        top: 220px;
+        left: 50px;
+        text-align: center;
+        font-size: 20px;
+        font-family: 'one';
+        padding: 10px;
+        height: 60px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        background-color: #b6bdbbd3;
+        margin: 0 auto;
+    }
+
+    #submit2 {
+        margin-left: 5px;
+        margin-top: 5px;
+        height: 30px;
+        font-family: 'one';
+        align-items: center;
+        border-radius: 5px;
+    }
+
+    #visible,
+    #visible2,
+    .visible3 {
+        visibility: hidden;
+    }
+
+
+
+    .center {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 5px;
+    }
 }
 
-#score {
-    position: fixed;
-    top: 100px;
-    left: 50px;
-    text-align: center;
-    font-size: 30px;
-    font-family: 'one';
-    padding-bottom: 10px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    background-color: #b6bdbbd3;
-    width: 500px;
-}
 
-form.center {
-    position: fixed;
-    top: 220px;
-    left: 50px;
-    text-align: center;
-    font-size: 20px;
-    font-family: 'one';
-    padding: 10px;
-    height: 60px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    background-color: #b6bdbbd3;
-    margin: 0 auto;
-}
+@media screen and (min-width: 1024px) {
+    .btn {
+        padding: 0px 10px 0px 10px !important;
+        height: 40px;
+    }
 
-#submit2 {
-    margin-left: 5px;
-    margin-top: 5px;
-    height: 30px;
-    font-family: 'one';
-    align-items: center;
-    border-radius: 5px;
-}
+    #score {
+        position: fixed;
+        top: 100px;
+        left: 50px;
+        text-align: center;
+        font-size: 30px;
+        font-family: 'one';
+        padding-bottom: 10px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        background-color: #b6bdbbd3;
+        width: 500px;
+    }
 
-#visible,
-#visible2,
-.visible3 {
-    visibility: hidden;
-}
+    form.center {
+        position: fixed;
+        top: 220px;
+        left: 50px;
+        text-align: center;
+        font-size: 20px;
+        font-family: 'one';
+        padding: 10px;
+        height: 60px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        background-color: #b6bdbbd3;
+        margin: 0 auto;
+    }
 
-h1 {
-    font-size: 5em;
-    text-align: center;
-    text-shadow: 2px 2px 4px grey;
-    margin-bottom: 0px !important;
-    color: #000;
-    font-family: 'one';
-    margin-top: 10px;
-    height: 40px;
-    padding: 0px 10px 0px 10px;
-}
+    #submit2 {
+        margin-left: 5px;
+        margin-top: 5px;
+        height: 30px;
+        font-family: 'one';
+        align-items: center;
+        border-radius: 5px;
+    }
 
-.center {
-    display: flex !important;
-    justify-content: center !important;
-    margin-top: 5px;
+    #visible,
+    #visible2,
+    .visible3 {
+        visibility: hidden;
+    }
+
+    h1 {
+        font-size: 5em;
+        text-align: center;
+        text-shadow: 2px 2px 4px grey;
+        margin-bottom: 0px !important;
+        color: #000;
+        font-family: 'one';
+        margin-top: 10px;
+        height: 40px;
+        padding: 0px 10px 0px 10px;
+    }
+
+    .center {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 5px;
+    }
 }
